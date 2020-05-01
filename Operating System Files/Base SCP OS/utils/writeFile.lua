@@ -1,6 +1,6 @@
 --writeFile.lua
 
-function writeFile(filePath, fileName, data)
+function write(filePath, fileName, data)
 	print("filePath | " .. filePath)
 	print("fileName | " .. fileName)
 	print("data | " .. data)

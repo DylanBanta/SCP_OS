@@ -24,7 +24,7 @@ h.close()
 os.loadAPI("utils/writeFile")
 
 --creates util gitHub.lua in installation computer's ./utils directory
-writeFile.writeFile("./utils", "gitHub", gitHubData)
+writeFile.write("/utils", "gitHub", gitHubData)
 os.loadAPI("utils/gitHub")
 gitHub.get(readFileUrl, "./utils", "readFile")
 end
