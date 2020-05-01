@@ -2,6 +2,14 @@
 
 local osVersion = "Base SCP OS V 2.12.14a"
 
+function installSCPOS()
+
+end
+
+function installcardReaderOS()
+
+end
+
 function baseOSInstaller()
 
 --filePaths for gitHub files
@@ -52,7 +60,13 @@ local menuBuilder = require("utils.menuBuilder")
 
 local options = { "SCP OS V 18.12.224b", "ID Scanner OS" }
 local menuResult = menuBuilder.runMenu(osVersion, options)
-print("menuResult | " .. menuResult)
+
+if menuResult == 1 then
+	installSCPOS()
+elseif menuResult == 2 then
+	installcardReaderOS()
+end
+
 end
 
 baseOSInstaller()
