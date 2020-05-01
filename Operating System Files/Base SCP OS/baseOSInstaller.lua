@@ -30,6 +30,10 @@ writeFile.writeFile("./utils", "gitHub.lua", gitHubData)
 local gitHub = require("utils.gitHub")
 
 gitHub.get(readFilePath, "./utils", "readFile")
+
+local readFile = require("utils.readFile")
+print("Test")
+print(readFile.readFile("/utils/writeFile.lua"))
 end
 
 baseOSInstaller()
