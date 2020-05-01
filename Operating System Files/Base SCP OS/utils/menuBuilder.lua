@@ -46,7 +46,7 @@ function runMenu(options)
 				end
 			--Up key is pressed
 			elseif key == 31 or key == 208 then
-				if nOption < optionCount then
+				if nOption < #options then
 					nOption = nOption + 1
 					term.clear()
 				end
