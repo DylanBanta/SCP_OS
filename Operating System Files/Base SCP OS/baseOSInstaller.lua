@@ -34,6 +34,8 @@ writeFile.writeFile("./utils", "gitHub.lua", gitHubData)
 --load gitHub now that it's been created
 local gitHub = require("utils.gitHub")
 
+gitHub.get(drawHeaderPath, "./ui", "drawHeader")
+
 --create drawHeader in ./ui directory
 local drawHeader = require("ui.drawHeader")
 
