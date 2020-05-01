@@ -18,3 +18,4 @@ function getExt(url, filePath, fileName, ext)
 	writeFile.writeFile(filePath,fn, data)
 end
 
+return { get = get, getExt = getExt }

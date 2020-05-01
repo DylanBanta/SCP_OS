@@ -21,12 +21,15 @@ h.write(writeFileData)
 h.close()
 
 --load writeFile now that it's been created
-local writeFile = require("/utils/writeFile.lua")
+local writeFile = require("utils.writeFile")
 
 --creates util gitHub.lua in installation computer's ./utils directory
-writeFile.writeFile("utils", "gitHub", gitHubData)
-os.loadAPI("utils/gitHub")
-gitHub.get(readFileUrl, "utils", "readFile")
+writeFile.writeFile("./utils", "gitHub", gitHubData)
+
+--load gitHub now that it's been created
+local gitHub = require("utils.gitHub")
+
+gitHub.get(readFileUrl, "./utils", "readFile")
 end
 
 baseOSInstaller()
