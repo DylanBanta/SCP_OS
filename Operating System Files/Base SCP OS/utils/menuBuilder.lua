@@ -8,6 +8,8 @@ local w,h = term.getSize()
 --nOption is chosen option in menu
 local nOption = 1
 
+local drawHeader = require("ui.drawHeader")
+
 --Prints text centered
 function printCentered(y,offset,output)
     local x = math.floor((w - string.len(output)) / 2)
@@ -15,6 +17,11 @@ function printCentered(y,offset,output)
     term.setCursorPos(x,halfY)
     term.clearLine()
     term.write(output)
+end
+
+function display(osVersion, options)
+	drawHeader.drawHeader()
+    drawFrontend(options)
 end
 
 --GUI
@@ -30,9 +37,8 @@ function drawFrontend(options)
 	end
 end
 
-function runMenu(options)
-	term.clear()
-	drawFrontend(options)
+function runMenu(osVersion, options)
+	display(osVersion, options)
 	while true do
 		--Checks for a key press, then assigns key to p
 		local e,p = os.pullEvent()
@@ -42,13 +48,13 @@ function runMenu(options)
 			if key == 17 or key == 200 then
 				if nOption > 1 then
 					nOption = nOption - 1
-					display()
+					display(osVersion, options)
 				end
 			--Up key is pressed
 			elseif key == 31 or key == 208 then
 				if nOption < #options then
 					nOption = nOption + 1
-					term.clear()
+					display(osVersion, options)
 				end
 			--Enter key is pressed
 			elseif key == 28 then
