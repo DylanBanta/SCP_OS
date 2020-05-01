@@ -1,11 +1,11 @@
 --readFile.lua
 
-local function readFile(filePath)
-	print("filePath | " .. filePath)
-	local h = fs.open(filePath, "r")
-	local text = h.readall()
+function readFile(filePath, fileName)
+	local fullPath = filePath .. '/' .. fileName
+	local h = fs.open(fullPath, "w")
+	local text = h.readAll()
 	h.close()
 	return text
 end
 
-return { readFile  = readFile }
+return { readFile = readFile }
