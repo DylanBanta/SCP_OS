@@ -5,7 +5,7 @@ local osVersion = "SCP OS INSTALLER"
 --filePaths for gitHub files
 local OSPath = "https://raw.githubusercontent.com/DylanBanta/SCP_OS/master/Operating%20System%20Files/SCP%20OS/"
 local utilsPath = OSPath .. "utils/"
-local uiPath = OSPath .. "ui/"
+local uiPath = OSPath .. "uis/"
 
 
 function installSCPOS()
@@ -14,9 +14,12 @@ end
 
 
 function installcardReaderOS()
-print("Enter Install cardReaderOS")
+	print("Enter Install cardReaderOS")
 end
 
+function installBundleOS()
+	print("Enter Install Bundle OS")
+end
 
 function getRequired()
 	local writeFilePath = utilsPath .. "writeFile.lua"
@@ -72,14 +75,17 @@ function OSInstaller()
 
 	local menuBuilder = require("utils.menuBuilder")
 
-	local options = { "SCP OS V 18.12.224b", "ID Scanner OS" }
+	local options = { "SCP OS V 18.12.224b ", "ID Scanner OS " }
 	local menuResult = menuBuilder.runMenu(osVersion, options)
 
 	if menuResult == 1 then
+		print("ENTER")
 		installSCPOS()
 	elseif menuResult == 2 then
 		installcardReaderOS()
 	end
+	
+	print(menuResult)
 end
 
 OSInstaller()

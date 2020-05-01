@@ -64,7 +64,7 @@ function runMenu(osVersion, options)
 		end
 
 	--Once while run selected option	
-	return tostring(nOption)
+	return nOption
 end
 
 return { runMenu = runMenu }
