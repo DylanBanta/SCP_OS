@@ -40,6 +40,8 @@ end
 
 
 function getUtils()
+	gitHub = require("utils.gitHub") --global
+	
 	--filePaths for utils
 	local readFilePath = utilsPath .. "readFile.lua"
 	local menuBuilderPath = utilsPath .. "menuBuilder.lua"
@@ -51,6 +53,8 @@ end
 
 
 function getUis()
+	gitHub = require("utils.gitHub") --global
+	
 	--filePaths for uis
 	local drawHeaderPath = uiPath .. "drawHeader.lua"
 	
@@ -61,9 +65,6 @@ end
 function OSInstaller()
 
 	getRequired()
-	--load gitHub now that it's been created
-	gitHub = require("utils.gitHub") --global
-	
 	getUtils()
 	getUis()	
 
