@@ -23,6 +23,10 @@ h.close()
 --load writeFile.lua into API
 os.loadAPI("utils/writeFile")
 
+print("start test")
+writeFile.test()
+print("end test")
+
 --creates util gitHub.lua in installation computer's ./utils directory
 writeFile.write("/utils", "gitHub", gitHubData)
 os.loadAPI("utils/gitHub")
