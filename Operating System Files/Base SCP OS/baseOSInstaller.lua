@@ -33,7 +33,7 @@ gitHub.get(readFilePath, "./utils", "readFile")
 
 local readFile = require("utils.readFile")
 print("Test")
-print(readFile.readFile("/utils/writeFile.lua"))
+print(readFile.readFile("/utils", "writeFile.lua"))
 end
 
 baseOSInstaller()
