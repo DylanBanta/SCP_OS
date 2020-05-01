@@ -2,7 +2,7 @@
 
 function readFile(filePath, fileName)
 	local fullPath = filePath .. '/' .. fileName
-	local h = fs.open(fullPath, "w")
+	local h = fs.open(fullPath, "r")
 	local text = h.readAll()
 	h.close()
 	return text
