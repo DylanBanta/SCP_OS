@@ -7,13 +7,13 @@ local BaseOSPath = "https://raw.githubusercontent.com/DylanBanta/SCP_OS/master/O
 local utilsPath = BaseOSPath .. "utils/"
 
 --filePaths for utils
-local writeFile = utilsPath .. "writeFile.lua"
-local gitHub = utilsPath .. "gitHub.lua"
-local readFile = utilsPath .. "readFile.lua"
+local writeFilePath = utilsPath .. "writeFile.lua"
+local gitHubPath = utilsPath .. "gitHub.lua"
+local readFilePath = utilsPath .. "readFile.lua"
 
 --get utils from gitHub
-local writeFileData = http.get(writeFile).readAll()
-local gitHubData = http.get(gitHub).readAll()
+local writeFileData = http.get(writeFilePath).readAll()
+local gitHubData = http.get(gitHubPath).readAll()
 
 --creates util writeFile.lua in installation computer's ./utils directory
 local h = fs.open("/utils/writeFile.lua", "w")
@@ -29,7 +29,7 @@ writeFile.writeFile("./utils", "gitHub.lua", gitHubData)
 --load gitHub now that it's been created
 local gitHub = require("utils.gitHub")
 
-gitHub.get(readFile, "./utils", "readFile")
+gitHub.get(readFilePath, "./utils", "readFile")
 end
 
 baseOSInstaller()
