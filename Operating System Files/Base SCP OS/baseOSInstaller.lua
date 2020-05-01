@@ -12,7 +12,7 @@ h.close()
 
 os.loadAPI("./utils/writeFile.lua")
 writeFile.writeFile("./utils", "gitHub", gitHubData)
-os.loadAPI("./utils/github.lua")
+os.loadAPI("./utils/gitHub.lua")
 gitHub.get(readFileUrl, "./utils", "readFile")
 end
 
