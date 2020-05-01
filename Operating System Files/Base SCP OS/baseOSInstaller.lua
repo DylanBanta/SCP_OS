@@ -10,6 +10,7 @@ local utilsPath = BaseOSPath .. "utils/"
 local writeFilePath = utilsPath .. "writeFile.lua"
 local gitHubPath = utilsPath .. "gitHub.lua"
 local readFilePath = utilsPath .. "readFile.lua"
+local menuBuilderPath = utilsPath .. "menuBuilder.lua"
 
 --get utils from gitHub
 local writeFileData = http.get(writeFilePath).readAll()
@@ -29,11 +30,15 @@ writeFile.writeFile("./utils", "gitHub.lua", gitHubData)
 --load gitHub now that it's been created
 local gitHub = require("utils.gitHub")
 
+--create remaining utils in installation computer's ./utils directory
 gitHub.get(readFilePath, "./utils", "readFile")
+gitHub.get(menuBuilderPath, "./utils", "menuBuilder")
 
-local readFile = require("utils.readFile")
-print("Test")
-print(readFile.readFile("/utils", "writeFile.lua"))
+local menuBuilder = require("utils.menuBuilder")
+
+local options = { "SCP OS V 18.12.224b", "ID Scanner OS" }
+local menuResult = menuBuilder.runMenu(options)
+print("menuResult | " .. menuResult)
 end
 
 baseOSInstaller()
