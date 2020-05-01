@@ -48,8 +48,9 @@ gitHub.get(menuBuilderPath, "./utils", "menuBuilder")
 
 local menuBuilder = require("utils.menuBuilder")
 
+local osVersion = "Base SCP OS V 2.12.14a"
 local options = { "SCP OS V 18.12.224b", "ID Scanner OS" }
-local menuResult = menuBuilder.runMenu(options)
+local menuResult = menuBuilder.runMenu(osVersion, options)
 print("menuResult | " .. menuResult)
 end
 
