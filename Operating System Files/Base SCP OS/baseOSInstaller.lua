@@ -1,4 +1,4 @@
---baseOSInstaller.lua
+--pastebin get 4vSGpQ0y baseOSInstaller.lua
 
 function baseOSInstaller()
 
@@ -11,7 +11,9 @@ h.write(writeFileData)
 h.close()	
 
 os.loadAPI("./utils/writeFile.lua")
-writeFile.writeFile("./utils", gitHub, gitHubData)
+writeFile.writeFile("./utils", "gitHub", gitHubData)
 os.loadAPI("./utils/github.lua")
 gitHub.get(readFileUrl, "./utils", "readFile")
 end
+
+baseOSInstaller()
