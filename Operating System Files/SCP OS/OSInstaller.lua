@@ -1,72 +1,82 @@
---pastebin get 4vSGpQ0y baseOSInstaller.lua
+--pastebin get 4vSGpQ0y OSInstaller.lua
 
-local osVersion = "Base SCP OS V 2.12.14a"
-
-function installSCPOS()
-
-end
-
-function installcardReaderOS()
-
-end
-
-function baseOSInstaller()
+local osVersion = "SCP OS INSTALLER"
 
 --filePaths for gitHub files
-local BaseOSPath = "https://raw.githubusercontent.com/DylanBanta/SCP_OS/master/Operating%20System%20Files/Base%20SCP%20OS/"
-local utilsPath = BaseOSPath .. "utils/"
-local uiPath = BaseOSPath .. "ui/"
+local OSPath = "https://raw.githubusercontent.com/DylanBanta/SCP_OS/master/Operating%20System%20Files/SCP%20OS/"
+local utilsPath = OSPath .. "utils/"
+local uiPath = OSPath .. "ui/"
 
---filePaths for utils
-local writeFilePath = utilsPath .. "writeFile.lua"
-local gitHubPath = utilsPath .. "gitHub.lua"
-local readFilePath = utilsPath .. "readFile.lua"
-local menuBuilderPath = utilsPath .. "menuBuilder.lua"
 
---filePaths for uis
-local drawHeaderPath = uiPath .. "drawHeader.lua"
-
---get utils from gitHub
-local writeFileData = http.get(writeFilePath).readAll()
-local gitHubData = http.get(gitHubPath).readAll()
-
---creates writeFile.lua in ./utils directory
-local h = fs.open("/utils/writeFile.lua", "w")
-h.write(writeFileData)
-h.close()
-
---load writeFile now that it's been created
-local writeFile = require("utils.writeFile")
-
---creates gitHub.lua ./utils directory
-writeFile.writeFile("./utils", "gitHub.lua", gitHubData)
-
---load gitHub now that it's been created
-local gitHub = require("utils.gitHub")
-
-gitHub.get(drawHeaderPath, "./ui", "drawHeader")
-
---create drawHeader in ./ui directory
-local drawHeader = require("ui.drawHeader")
-
---now that we have the header installed it's run for aestetics
-drawHeader.drawHeader()
-
---create remaining utils in installation computer's ./utils directory
-gitHub.get(readFilePath, "./utils", "readFile")
-gitHub.get(menuBuilderPath, "./utils", "menuBuilder")
-
-local menuBuilder = require("utils.menuBuilder")
-
-local options = { "SCP OS V 18.12.224b", "ID Scanner OS" }
-local menuResult = menuBuilder.runMenu(osVersion, options)
-
-if menuResult == 1 then
-	installSCPOS()
-elseif menuResult == 2 then
-	installcardReaderOS()
+function installSCPOS()
+	print("Enter Install SCPOS")
 end
 
+
+function installcardReaderOS()
+print("Enter Install cardReaderOS")
 end
 
-baseOSInstaller()
+
+function getRequired()
+	local writeFilePath = utilsPath .. "writeFile.lua"
+	local gitHubPath = utilsPath .. "gitHub.lua"
+	
+	--get utils from gitHub
+	local writeFileData = http.get(writeFilePath).readAll()
+	local gitHubData = http.get(gitHubPath).readAll()
+	
+	--creates writeFile.lua in ./utils directory
+	local h = fs.open("/utils/writeFile.lua", "w")
+	h.write(writeFileData)
+	h.close()
+
+	--load writeFile now that it's been created
+	local writeFile = require("utils.writeFile")
+
+	--creates gitHub.lua ./utils directory
+	writeFile.writeFile("./utils", "gitHub.lua", gitHubData)
+end
+
+
+function getUtils()
+	--filePaths for utils
+	local readFilePath = utilsPath .. "readFile.lua"
+	local menuBuilderPath = utilsPath .. "menuBuilder.lua"
+	
+	--using gitHub create remaining utils in ./utils directory
+	gitHub.get(readFilePath, "./utils", "readFile")
+	gitHub.get(menuBuilderPath, "./utils", "menuBuilder")
+end
+
+
+function getUis()
+	--filePaths for uis
+	local drawHeaderPath = uiPath .. "drawHeader.lua"
+	
+	gitHub.get(drawHeaderPath, "./ui", "drawHeader")
+end
+
+
+function OSInstaller()
+
+	getRequired()
+	--load gitHub now that it's been created
+	gitHub = require("utils.gitHub") --global
+	
+	getUtils()
+	getUis()	
+
+	local menuBuilder = require("utils.menuBuilder")
+
+	local options = { "SCP OS V 18.12.224b", "ID Scanner OS" }
+	local menuResult = menuBuilder.runMenu(osVersion, options)
+
+	if menuResult == 1 then
+		installSCPOS()
+	elseif menuResult == 2 then
+		installcardReaderOS()
+	end
+end
+
+OSInstaller()
