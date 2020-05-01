@@ -16,19 +16,15 @@ local writeFileData = http.get(writeFile).readAll()
 local gitHubData = http.get(gitHub).readAll()
 
 --creates util writeFile.lua in installation computer's ./utils directory
-local h = fs.open("writeFile", "w")
+local h = fs.open("/utils/writeFile.lua", "w")
 h.write(writeFileData)
 h.close()
 
---load writeFile.lua into API
-os.loadAPI("writeFile")
-
-print("start test")
-writeFile.test()
-print("end test")
+--load writeFile now that it's been created
+local writeFile = require("/utils/writeFile.lua")
 
 --creates util gitHub.lua in installation computer's ./utils directory
-writeFile.write("utils", "gitHub", gitHubData)
+writeFile.writeFile("utils", "gitHub", gitHubData)
 os.loadAPI("utils/gitHub")
 gitHub.get(readFileUrl, "utils", "readFile")
 end
