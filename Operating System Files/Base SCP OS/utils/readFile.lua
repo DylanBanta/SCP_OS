@@ -2,6 +2,7 @@
 
 function readFile(filePath, fileName)
 	local fullPath = filePath .. '/' .. fileName
+	print(fullPath)
 	local h = fs.open(fullPath, "r")
 	local text = h.readAll()
 	h.close()
