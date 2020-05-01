@@ -33,6 +33,7 @@ function drawFrontend(options)
 end
 
 function runMenu(options)
+	term.clear()
 	drawFrontend(options)
 	while true do
 		--Checks for a key press, then assigns key to p
