@@ -5,9 +5,7 @@ os.pullEvent = os.pullEventRaw
 --width and height of window
 local w,h = term.getSize()
 
-
 --nOption is chosen option in menu
---options list contains all entries in menu
 local nOption = 1
 
 --Prints text centered
@@ -50,7 +48,7 @@ function runMenu(options)
 			elseif key == 31 or key == 208 then
 				if nOption < optionCount then
 					nOption = nOption + 1
-					display()
+					term.clear()
 				end
 			--Enter key is pressed
 			elseif key == 28 then
