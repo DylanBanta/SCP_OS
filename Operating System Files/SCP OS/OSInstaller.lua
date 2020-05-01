@@ -40,7 +40,7 @@ end
 
 
 function getUtils()
-	gitHub = require("utils.gitHub") --global
+	gitHub = require("utils.gitHub")
 	
 	--filePaths for utils
 	local readFilePath = utilsPath .. "readFile.lua"
@@ -53,7 +53,7 @@ end
 
 
 function getUis()
-	gitHub = require("utils.gitHub") --global
+	gitHub = require("utils.gitHub")
 	
 	--filePaths for uis
 	local drawHeaderPath = uiPath .. "drawHeader.lua"
