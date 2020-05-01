@@ -1,7 +1,7 @@
 --gitHub.lua
 
 --import writeFile
-local writeFile = require("utils.writeFile.lua")
+local writeFile = require("utils.writeFile")
 
 
 --lua extension
