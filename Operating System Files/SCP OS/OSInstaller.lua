@@ -63,9 +63,11 @@ end
 
 
 function OSInstaller()
-
+	print("getRequired")
 	getRequired()
+	print("getUtils")
 	getUtils()
+	print("getUis")
 	getUis()	
 
 	local menuBuilder = require("utils.menuBuilder")
