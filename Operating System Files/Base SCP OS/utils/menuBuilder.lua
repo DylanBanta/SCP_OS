@@ -20,7 +20,7 @@ function printCentered(y,offset,output)
 end
 
 function display(osVersion, options)
-	drawHeader.drawHeader()
+	drawHeader.drawHeader(osVersion)
     drawFrontend(options)
 end
 
