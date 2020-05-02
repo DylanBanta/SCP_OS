@@ -17,7 +17,7 @@ end
 --GUI
 function drawFrontend(options)
 	
-	local formatting = require("utils.formatting")
+	local formatting = require("ui.formatting")
 
 	local count = 0
 	local countPP = 1
