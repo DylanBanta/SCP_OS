@@ -62,6 +62,7 @@ function getUis()
 	
 	--filePaths for uis
 	local drawHeaderPath = uiPath .. "drawHeader.lua"
+	local formattingPath = uiPath .. "formatting.lua"
 	
 	gitHub.get(drawHeaderPath, "./ui", "drawHeader")
 end
