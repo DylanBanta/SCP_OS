@@ -8,30 +8,23 @@ local w,h = term.getSize()
 --nOption is chosen option in menu
 local nOption = 1
 
-local drawHeader = require("ui.drawHeader")
-
---Prints text centered
-function printCentered(y,offset,output)
-    local x = math.floor((w - string.len(output)) / 2)
-	local halfY = math.floor(y/2) + offset;
-    term.setCursorPos(x,halfY)
-    term.clearLine()
-    term.write(output)
-end
-
 function display(osVersion, options)
+	local drawHeader = require("ui.drawHeader")
 	drawHeader.drawHeader(osVersion)
     drawFrontend(options)
 end
 
 --GUI
 function drawFrontend(options)
+	
+	local formatting = require("utils.formatting")
+
 	local count = 0
 	local countPP = 1
 	
 	--TODO Update to for loop
 	while count < #options do
-		printCentered(h, count, ((nOption == countPP) and " [ "..options[countPP].." ]") or options[countPP] .. " ")
+		formatting.printCentered(count, ((nOption == countPP) and " [ "..options[countPP].." ]") or options[countPP] .. " ")
 		countPP = countPP +1
 		count = count + 1
 	end

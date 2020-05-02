@@ -14,6 +14,8 @@ end
 
 
 function installcardReaderOS()
+	local gitHub = require("utils.gitHub")
+	
 	print("Enter Install cardReaderOS")
 end
 
@@ -43,7 +45,7 @@ end
 
 
 function getUtils()
-	gitHub = require("utils.gitHub")
+	local gitHub = require("utils.gitHub")
 	
 	--filePaths for utils
 	local readFilePath = utilsPath .. "readFile.lua"
@@ -56,7 +58,7 @@ end
 
 
 function getUis()
-	gitHub = require("utils.gitHub")
+	local gitHub = require("utils.gitHub")
 	
 	--filePaths for uis
 	local drawHeaderPath = uiPath .. "drawHeader.lua"
@@ -66,11 +68,8 @@ end
 
 
 function OSInstaller()
-	print("getRequired")
 	getRequired()
-	print("getUtils")
 	getUtils()
-	print("getUis")
 	getUis()	
 
 	local menuBuilder = require("utils.menuBuilder")
@@ -79,13 +78,10 @@ function OSInstaller()
 	local menuResult = menuBuilder.runMenu(osVersion, options)
 
 	if menuResult == 1 then
-		print("ENTER")
 		installSCPOS()
 	elseif menuResult == 2 then
 		installcardReaderOS()
 	end
-	
-	print(menuResult)
 end
 
 OSInstaller()
